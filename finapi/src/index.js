@@ -39,9 +39,14 @@ app.post('/account', (request, response) => {
 app.get('/statement/:cpf', (request, response) => {
   const { cpf } = request.params
 
-  const customer = customers.find((customer) => customer.cpf === cpf)
-  
-  return response.json(customer.statement)
+  const customerFound = customers.find((customer) => customer.cpf === cpf)
+
+  if(!customerFound){
+    return response.status(404).json({error: "Customer not found"})
+  }
+
+
+  return response.json(customerFound.statement)
 })
 
 app.listen(3333)
