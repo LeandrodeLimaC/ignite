@@ -1,3 +1,4 @@
+const { response } = require('express');
 const express = require('express')
 const { v4: uuidv4 } = require("uuid")
 
@@ -86,7 +87,7 @@ app.post('/withdraw', verifyIfExistsAccountWithCPF, (request, response) => {
   const balance = getBalance(customer.statement)
 
   if(balance < amount) {
-    return response.status(400).json({error : "Insufficient funds"}).send()
+    return response.status(400).json({error : "Insufficient funds"})
   }
 
   const statementOperation = {
@@ -98,6 +99,17 @@ app.post('/withdraw', verifyIfExistsAccountWithCPF, (request, response) => {
   customer.statement.push(statementOperation)
 
   return response.status(201).send()
+})
+
+app.get('/statement/date', verifyIfExistsAccountWithCPF, (request, response) => {
+  const {date} = request.query
+  const {customer} = request
+
+  const dateFormat = new Date(date + " 00:00")
+
+  const statement = customer.statement.filter((operation) => operation.created_at.toDateString() === dateFormat.toDateString())
+
+  return response.json(statement)
 })
 
 app.listen(3333)
