@@ -1,4 +1,4 @@
-const { response } = require('express');
+const { response, request } = require('express');
 const express = require('express')
 const { v4: uuidv4 } = require("uuid")
 
@@ -110,6 +110,21 @@ app.get('/statement/date', verifyIfExistsAccountWithCPF, (request, response) => 
   const statement = customer.statement.filter((operation) => operation.created_at.toDateString() === dateFormat.toDateString())
 
   return response.json(statement)
+})
+
+app.put("/account", verifyIfExistsAccountWithCPF, (request, response) => {
+  const {customer} = request 
+  const {name} = request.body
+
+  customer.name = name
+
+  return response.status(201).send()
+})
+
+app.get('/account', verifyIfExistsAccountWithCPF, (request, response) => {
+  const {customer} = request
+
+  return response.json(customer) 
 })
 
 app.listen(3333)
