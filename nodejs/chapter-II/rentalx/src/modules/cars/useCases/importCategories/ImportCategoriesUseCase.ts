@@ -31,7 +31,10 @@ class ImportCategoriesUseCase {
             description,
           });
         })
-        .on("end", () => resolve(categories))
+        .on("end", () => {
+          fs.promises.unlink(file.path);
+          resolve(categories);
+        })
         .on("error", (error) => reject(error));
     });
   }
