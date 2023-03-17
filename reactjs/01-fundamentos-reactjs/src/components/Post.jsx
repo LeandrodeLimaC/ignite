@@ -11,10 +11,9 @@ export function Post({
   author,
   publishedAt,
   content
-}) {
-  const [comments, setComments] = useState(["Post muito bacana! top!"])
-
+}) {  
   const [newCommentText, setNewCommentText] = useState('');
+  const [comments, setComments] = useState(["Post muito bacana! top!"])
 
   const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
     locale: ptBR
@@ -36,6 +35,14 @@ export function Post({
     setNewCommentText(event.target.value)
   }
 
+  function deleteComment(commentToDelete) {
+    const commentsWithoutDeletedOne = comments.filter((comment) => {
+      return comment !== commentToDelete
+    })
+
+    setComments(commentsWithoutDeletedOne)
+  }
+
   return (
     <article className={styles.post}>
       <header>
@@ -54,13 +61,15 @@ export function Post({
 
       <div className={styles.content}>
         {
-          content.map(line => {
-            if(line.type === 'paragraph'){
-              return <p>{line.content}</p>
-            } else if (line.type === 'link') {
-              return <p><a href='#'>{line.content}</a></p>
-            }
-          })
+          content.map(line => (
+            <p key={line.content}>
+              {
+                line.type === 'paragraph' 
+                ? ( line.content) 
+                : ( <a href='#'>{line.content}</a> )
+              }
+            </p>
+          ))
         }
       </div>
 
@@ -82,7 +91,11 @@ export function Post({
       <div className={styles.commentList}>
         {
           comments.map((comment) => (
-            <Comment content={comment}/>
+            <Comment 
+              key={comment} 
+              content={comment} 
+              onDeleteComment={deleteComment}
+            />
           ))
         }
       </div>
