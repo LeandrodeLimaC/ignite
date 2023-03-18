@@ -1,17 +1,15 @@
 import { useState } from 'react'
 
-import { Task } from './components/Task'
-
 import './global.css'
 import './App.css'
+import { TaskList } from './components/TaskList'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className='container'>
-      <Task />
-      <Task />
+      <TaskList />
     </div>
   )
 }
