@@ -1,0 +1,5 @@
+.container {
+  display: grid;
+  width: min(calc(80%, -2rem), 80ch);
+  margin-inline: auto;
+}
