@@ -45,9 +45,8 @@
   padding: 2px;
   height: min-content;
   background-color: transparent;
-  border: none;
+  border: 0;
   border-radius: 4px;
-  outline: transparent;
 
   color: var(--gray-300);
   line-height: 0;

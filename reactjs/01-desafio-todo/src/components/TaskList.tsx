@@ -1,11 +1,13 @@
 import { Task } from "./Task";
 
+import styles from './TaskList.module.css';
+
 export function TaskList() {
   return (
-    <div>
-      <div>
-        <p>Tarefas criadas <div>5</div></p>
-        <p>Concluídas <div>2 de 5</div></p>
+    <div className={styles.taskList}>
+      <div className={styles.taskListHeader}>
+        <p>Tarefas criadas <em>5</em></p>
+        <p>Concluídas <em>2 de 5</em></p>
       </div>
 
       <div>
