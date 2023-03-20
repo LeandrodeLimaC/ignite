@@ -9,18 +9,18 @@ import './global.css';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div className="container">
       <div className="heroBanner">
         <img src={Logo} alt="Logotipo do Ignite" />
       </div>
-      <form className="newTaskForm">
-        <input type="text" />
-        <button type="submit">Criar <TbCirclePlus size={18} /></button>
-      </form>
-      <TaskList />
+      <main>
+        <form className="newTaskForm">
+          <input type="text" placeholder="Adicione uma nova tarefa" />
+          <button type="submit">Criar <TbCirclePlus size={18} /></button>
+        </form>
+        <TaskList />
+      </main>
     </div>
   )
 }

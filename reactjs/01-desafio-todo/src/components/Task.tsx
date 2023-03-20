@@ -4,13 +4,13 @@ import { Radio } from "./Radio";
 import styles from './Task.module.css'
 
 export function Task() {
-  const isDone = true
+  const isDone = false
 
   const descptionWithLineThroughOrNormal = isDone ? styles.taskDescriptionWithLineThrough : styles.taskDescription
   const taskCompleted = isDone ? styles.taskBorder : ''
 
   return (
-    <div className={`${styles.task} ${taskCompleted}`}>
+    <li className={`${styles.task} ${taskCompleted}`}>
       <div className={styles.taskBox}>
         <div>
           <Radio isChecked={isDone} />
@@ -22,6 +22,6 @@ export function Task() {
       <button>
         <TbTrash size={18} />
       </button>
-    </div>
+    </li>
   )
 }
