@@ -11,14 +11,11 @@
   color: var(--blue-600);
 }
 
-.radioChecked {
-  display: flex;
-  min-width: 1.125rem;
-  min-height: 1.125rem;
-
+.checked {
   color: var(--purple-400);
 }
 
-.radioChecked:hover {
+.checked:hover {
+  color: var(--purple-400);
   filter: brightness(120%);
 }

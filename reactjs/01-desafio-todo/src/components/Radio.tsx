@@ -4,14 +4,17 @@ import styles from './Radio.module.css'
 
 interface RadioProps {
   isChecked: boolean
+  onClick: () => void
 }
 
-export function Radio({ isChecked }: RadioProps) {
+export function Radio({ isChecked, onClick }: RadioProps) {
+  const RadioIcon = isChecked ? TbCircleCheckFilled : TbCircle
+  const radioStylesWhenChecked = isChecked ? styles.checked : ''
+
   return (
-    isChecked ? (
-      <TbCircleCheckFilled className={styles.radioChecked} />
-    ) : (
-      <TbCircle className={styles.radio} />
-    )
+    <RadioIcon
+      className={`${styles.radio} ${radioStylesWhenChecked}`}
+      onClick={onClick}
+    />
   )
 }
