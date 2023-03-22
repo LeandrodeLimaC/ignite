@@ -1,25 +1,43 @@
 import { TbTrash } from "react-icons/tb";
+
+import { ITask } from "../App";
 import { Radio } from "./Radio";
 
 import styles from './Task.module.css'
 
-export function Task() {
-  const isDone = false
+export interface TaskProps extends ITask {
+  onToggleComplete: (id: ITask['id']) => void
+  onDelete: (id: ITask['id']) => void
+}
 
-  const descptionWithLineThroughOrNormal = isDone ? styles.taskDescriptionWithLineThrough : styles.taskDescription
-  const taskCompleted = isDone ? styles.taskBorder : ''
+export function Task({
+  id,
+  completed,
+  description,
+  onToggleComplete,
+  onDelete
+}: TaskProps) {
+  const taskStylesWhenCompleted = completed ? styles.taskCompleted : ''
+
+  function toggleTaskComplete() {
+    onToggleComplete(id)
+  }
+
+  function handleTaskDelete() {
+    onDelete(id)
+  }
 
   return (
-    <li className={`${styles.task} ${taskCompleted}`}>
+    <li className={`${styles.task} ${taskStylesWhenCompleted}`}>
       <div className={styles.taskBox}>
         <div>
-          <Radio isChecked={isDone} />
+          <Radio isChecked={completed} onClick={toggleTaskComplete} />
         </div>
-        <p className={descptionWithLineThroughOrNormal}>
-          Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.
+        <p className={`${styles.taskDescription}`}>
+          {description}
         </p>
       </div>
-      <button>
+      <button onClick={handleTaskDelete}>
         <TbTrash size={18} />
       </button>
     </li>

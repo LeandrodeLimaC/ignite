@@ -13,8 +13,13 @@
   margin-top: 12px;
 }
 
-.taskBorder {
+.taskCompleted {
   border: 1px solid var(--gray-400);
+}
+
+.taskCompleted p {
+  color: var(--gray-300);
+  text-decoration: line-through;
 }
 
 .taskBox {
@@ -33,11 +38,6 @@
 
 .taskDescription {
   color: var(--white);
-}
-
-.taskDescriptionWithLineThrough {
-  color: var(--gray-300);
-  text-decoration: line-through;
 }
 
 .task button {
