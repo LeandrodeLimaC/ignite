@@ -1,0 +1,40 @@
+.taskList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.taskListHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.taskListHeader p {
+  color: var(--blue-400);
+  font-weight: 700;
+}
+
+.taskListHeader p em {
+  color: var(--white);
+  font-weight: 700;
+  font-style: normal;
+
+  padding: 2px 8px;
+  background: var(--gray-400);
+  border-radius: 999px;
+}
+
+.taskListContent {
+  border-radius: 8px;
+  border-top: 1px solid var(--gray-400);
+}
+
+.emptyContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 64px 24px;
+  gap: 20px;
+  color: #808080;
+  text-align: center;
+}

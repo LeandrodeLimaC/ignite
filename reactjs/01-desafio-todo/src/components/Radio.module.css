@@ -1,0 +1,21 @@
+.radio {
+  display: flex;
+  min-width: 1.125rem;
+  min-height: 1.125rem;
+
+  color: var(--blue-400);
+  border-radius: 100%;
+}
+
+.radio:hover {
+  color: var(--blue-600);
+}
+
+.checked {
+  color: var(--purple-400);
+}
+
+.checked:hover {
+  color: var(--purple-400);
+  filter: brightness(120%);
+}
