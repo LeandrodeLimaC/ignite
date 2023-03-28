@@ -49,13 +49,13 @@ declare const fontSizes: {
     readonly md: "1rem";
     readonly lg: "1.125rem";
     readonly xl: "1.25rem";
-    readonly "2xl": "1.5rem";
-    readonly "4xl": "2rem";
-    readonly "5xl": "2.25rem";
-    readonly "6xl": "3rem";
-    readonly "7xl": "4rem";
-    readonly "8xl": "4.5rem";
-    readonly "9xl": "6rem";
+    readonly '2xl': "1.5rem";
+    readonly '4xl': "2rem";
+    readonly '5xl': "2.25rem";
+    readonly '6xl': "3rem";
+    readonly '7xl': "4rem";
+    readonly '8xl': "4.5rem";
+    readonly '9xl': "6rem";
 };
 
 declare const fontWeights: {
